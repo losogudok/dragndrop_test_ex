@@ -1,0 +1,14 @@
+ul {
+	-webkit-user-select: none;
+}
+li {
+	-webkit-user-select: none;
+	cursor: pointer;
+	list-style-type: none;
+	background-color: #eee;
+	border: 1px solid #333;
+	margin-bottom: 10px;
+}
+li:hover {
+	background-color: #333;
+}
