@@ -1,5 +1,5 @@
-define(['utils/helpers'], function(helpers) {
-    var dragManager = new function() {
+define(['../utils/helpers'], function(helpers) {
+    function DragManager() {
 
             /**
              * составной объект для хранения информации о переносе:
@@ -85,7 +85,7 @@ define(['utils/helpers'], function(helpers) {
                 if (!dropElem) {
                     self.onDragCancel(dragObject);
                 } else {
-                    self.onDragEnd(dragObject, dropElem);
+                    self.onDragEnd(dragObject, dropElem, e);
                 }
             }
 
@@ -146,9 +146,6 @@ define(['utils/helpers'], function(helpers) {
             document.onmouseup = onMouseUp;
             document.onmousedown = onMouseDown;
 
-            this.onDragEnd = function(dragObject, dropElem) {};
-            this.onDragCancel = function(dragObject) {};
-
-        };
-    return dragManager;
+        }
+    return new DragManager;
 });

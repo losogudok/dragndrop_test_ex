@@ -7,7 +7,7 @@ li {
 	list-style-type: none;
 	background-color: #eee;
 	border: 1px solid #333;
-	margin-bottom: 10px;
+	padding-bottom: 10px;
 }
 li:hover {
 	background-color: #333;
