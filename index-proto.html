@@ -71,14 +71,11 @@
         draggable: lists[2].querySelectorAll('li'),
         copyList: lists[0]
     };
-    var simpleDnDList1 = Object.create(SimpleDnDList);
-    simpleDnDList1.init(options1);
+    var simpleDnDList1 = SimpleDnDList.init(options1);
 
-    var simpleDnDList2 = Object.create(SimpleDnDListWithRedBorder);
-    simpleDnDList2.init(options2);
+    var simpleDnDList2 = SimpleDnDListWithRedBorder.init(options2);
 
-    var simpleDnDList3 = Object.create(SimpleDnDListWithRedBackground);
-    simpleDnDList3.init(options3);
+    var simpleDnDList3 = SimpleDnDListWithRedBackground.init(options3);
     </script>
 </body>
 
