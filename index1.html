@@ -56,25 +56,25 @@
     var lists = document.querySelectorAll('ul');
 
     var options1 = {
-        rootEl: lists[0],
+        rootList: lists[0],
         dropZones: lists[0].querySelectorAll('li'),
         draggable: lists[0].querySelectorAll('li')
     };
     var options2 = {
-        rootEl: lists[1],
+        rootList: lists[1],
         dropZones: lists[1].querySelectorAll('li'),
         draggable: lists[1].querySelectorAll('li')
     };
     var options3 = {
-        rootEl: lists[2],
+        rootList: lists[2],
         dropZones: lists[2].querySelectorAll('li'),
         draggable: lists[2].querySelectorAll('li'),
         copyList: lists[0]
     };
 
-    var simpledndList = new SimpleDnD(options1);
-    var simpledndList = new SimpleDnDListWithBorder(options2);
-    var simpledndList = new SimpleDnDListWithBorderAndBackground(options3);
+    var simpledndList = new SimpleDnDList(options1);
+    // var simpledndList = new SimpleDnDListWithBorder(options2);
+    // var simpledndList = new SimpleDnDListWithBorderAndBackground(options3);
     
     </script>
 </body>

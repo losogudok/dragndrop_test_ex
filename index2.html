@@ -51,7 +51,7 @@
             <span>Z</span>
         </li>
     </ul>
-    <script type="text/javascript" src='simplednd.js'></script>
+    <script type="text/javascript" src='simplednd2.js'></script>
     <script type="text/javascript">
     var lists = document.querySelectorAll('ul');
 
@@ -71,11 +71,14 @@
         draggable: lists[2].querySelectorAll('li'),
         copyList: lists[0]
     };
+    var simpleDnDList1 = Object.create(SimpleDnDList);
+    simpleDnDList1.init(options1);
 
-    var simpledndList = new SimpleDnD(options1);
-    var simpledndList = new SimpleDnDListWithBorder(options2);
-    var simpledndList = new SimpleDnDListWithBorderAndBackground(options3);
-    
+    var simpleDnDList2 = Object.create(SimpleDnDListWithRedBorder);
+    simpleDnDList2.init(options2);
+
+    var simpleDnDList3 = Object.create(SimpleDnDListWithRedBackground);
+    simpleDnDList3.init(options3);
     </script>
 </body>
 
