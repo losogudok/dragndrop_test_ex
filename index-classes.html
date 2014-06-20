@@ -11,27 +11,27 @@
     <h1>Native Drag and Drop</h1>
     <small>Works only in modern browsers</small>
     <ul id="list1">
-        <li draggable='true'>
+        <li draggable='true' class="js-draggable">
             <span>A</span>
         </li>
-        <li draggable='true'>
+        <li draggable='true' class="js-draggable">
             <span>B</span>
         </li>
-        <li draggable='true'>
+        <li draggable='true' class="js-draggable">
             <span>C</span>
         </li>
     </ul>
     <ul id="list2">
-        <li draggable='true'>
+        <li draggable='true' class="js-draggable">
             <span>1</span>
         </li>
-        <li draggable='true'>
+        <li draggable='true' class="js-draggable">
             <span>2</span>
         </li>
-        <li draggable='true'>
+        <li draggable='true' class="js-draggable">
             <span>3</span>
         </li>
-        <li draggable='true'>
+        <li draggable='true' class="js-draggable">
             <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -41,17 +41,17 @@
         </li>
     </ul>
     <ul id="list3">
-        <li draggable='true'>
+        <li draggable='true' class="js-draggable">
             <span>X</span>
         </li>
-        <li draggable='true'>
+        <li draggable='true' class="js-draggable">
             <span>Y</span>
         </li>
-        <li draggable='true'>
+        <li draggable='true' class="js-draggable">
             <span>Z</span>
         </li>
     </ul>
-    <script type="text/javascript" src='simplednd.js'></script>
+    <script type="text/javascript" src='simplednd-classes.js'></script>
     <script type="text/javascript">
     var lists = document.querySelectorAll('ul');
 
@@ -72,9 +72,9 @@
         copyList: lists[0]
     };
 
-    var simpledndList = new SimpleDnD(options1);
-    var simpledndList = new SimpleDnDListWithBorder(options2);
-    var simpledndList = new SimpleDnDListWithBorderAndBackground(options3);
+    var simpledndList1 = new SimpleDnD(options1);
+    var simpledndList2 = new SimpleDnDListWithBorder(options2);
+    var simpledndList3 = new SimpleDnDListWithBorderAndBackground(options3);
     
     </script>
 </body>

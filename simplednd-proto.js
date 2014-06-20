@@ -122,7 +122,6 @@ var SimpleDnD = {
     },
     onDragOver: function(e, el, self) {
         if (el == self.rootEl) {
-            el.appendChild(self.dragEl.el);
             return false;
         }
         var targetCoord = e.target.getBoundingClientRect();
