@@ -1,5 +1,5 @@
 /*==========  CLASSICAL INHERITANCE  ==========*/
-
+"use strict";
 
 function extend(subClass, superClass) {
     var F = function() {};
@@ -58,7 +58,7 @@ var PubSub = {
             }
         }
     }
-}
+};
 
 var Helpers = {
     attachEvent: function(el, type, cssClass, callback) { 
@@ -73,9 +73,9 @@ var Helpers = {
                 return false;
             }
             e.data = {
-                inst: self
+                el: target
             };
-            callback.call(target, e);
+            callback.call(self, e);
         }, true);    
     },
     delegate: function(el, e, cssClass) {
@@ -112,27 +112,33 @@ SimpleDnD.prototype = {
         this.attachEvent(rootEl, 'dragstart', 'js-draggable', this.onDragStart);
     },
     onDragStart: function(e) {
-        var proto = Object.getPrototypeOf(e.data.inst);
-        proto.dragEl = this;
+        var proto = SimpleDnD.prototype;
+        var el = e.data.el;
+        proto.dragEl = el;
         console.log(SimpleDnD.prototype.dragEl);
-        this.classList.add('dragging');
+        el.classList.add('dragging');
         e.dataTransfer.effectAllowed = 'move';
         e.dataTransfer.setData('Text', e.target.dataset['dragel']);
         return true;
     },
     onDragLeave: function(e) {
-        this.classList.remove('dragging-over');
+        var el = e.data.el;
+        el.classList.remove('dragging-over');
     },
     onDragEnd: function(e) {
-        this.classList.remove('dragging');
+        var el = e.data.el;
+        el.classList.remove('dragging');
     },
     onDragOver: function(e) {
-        var self = e.data.inst;
-        var dragEl = self.dragEl;
+        var dragEl = this.dragEl;
+        var el = e.data.el;
         // console.log(self);
         var targetCoord = e.target.getBoundingClientRect();
-        if (this == self.rootEl) {
+        if (el == this.rootEl && this.rootEl.children.length) {
             return false;
+        }
+        else if (this.rootEl.children.length === 0) {
+            return this.rootEl.appendChild(dragEl);
         }
         if (e.clientY - targetCoord.top < (targetCoord.height / 2)) {
             e.target.insertAdjacentElement('beforeBegin', dragEl);
@@ -172,10 +178,9 @@ SimpleDnDListWithBorder.prototype = Object.create(SimpleDnD.prototype, {
     }
 });
 SimpleDnDListWithBorder.prototype.onDragEnd = function(e) {
-    var self = e.data.inst;
-    var rootEl = self.rootEl;
+    var rootEl = this.rootEl;
 
-    self.uber.onDragEnd.call(this, e);
+    Object.getPrototypeOf(SimpleDnDListWithBorder.prototype).onDragEnd.call(this, e);
     rootEl.classList.add('red-border');
     setTimeout(function() {
         rootEl.classList.remove('red-border');
@@ -195,11 +200,11 @@ SimpleDnDListWithBorderAndBackground.prototype = Object.create(SimpleDnDListWith
     }
 });
 SimpleDnDListWithBorderAndBackground.prototype.onDragEnd = function(e) {
-    var self = e.data.inst;
-    var rootEl = self.rootEl;
-    
-    self.uber.onDragEnd.call(this, e);
+    var rootEl = this.rootEl;
+    Object.getPrototypeOf(SimpleDnDListWithBorderAndBackground.prototype).onDragEnd.call(this, e);
     rootEl.classList.add('red-background');
+    var copy = this.dragEl.cloneNode(true);
+    this.copyList.appendChild(copy);
     setTimeout(function() {
         rootEl.classList.remove('red-background');
     }, 1000);
